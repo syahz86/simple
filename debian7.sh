@@ -104,6 +104,11 @@ cd ddos-deflate-master
 ./install.sh
 cd
 
+# User Status
+cd
+wget https://raw.githubusercontent.com/syahz86/simple/master/conf/status
+chmod +x status
+
 # Install SSH autokick
 cd
 wget https://raw.githubusercontent.com/syahz86/VPS/master/Autokick-debian.sh
