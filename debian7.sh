@@ -192,10 +192,7 @@ iptables-save
 
 # Restart Service
 chown -R www-data:www-data /home/vps/public_html
-service nginx start
-service php-fpm start
 service vnstat restart
-service openvpn restart
 service ssh restart
 service dropbear restart
 service fail2ban restart
