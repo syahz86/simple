@@ -10,6 +10,6 @@
 
 # z7 (support Debian 7 32/64 bit)
 ```
-wget https://raw.githubusercontent.com/syahz86/simple/master/z7.sh && chmod +x ./z7.sh && ./z7.sh
+wget https://raw.githubusercontent.com/syahz86/simple/master/debian7.sh && chmod +x ./debian7.sh && ./debian7.sh
 ```
-=================================================================================
+==================================================================================
