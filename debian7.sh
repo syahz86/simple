@@ -43,6 +43,7 @@ echo "screenfetch" >> .profile
 # setting port ssh
 sed -i '/Port 22/a Port 143' /etc/ssh/sshd_config
 sed -i 's/Port 22/Port  22/g' /etc/ssh/sshd_config
+echo "Banner /bannerssh" >> /etc/ssh/sshd_config
 service ssh restart
 
 # install dropbear
