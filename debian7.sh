@@ -28,6 +28,7 @@ sysv-rc-conf exim4 off
 apt-file update
 
 # Setting Vnstat
+apt-get -y install vnstat
 vnstat -u -i eth0
 chown -R vnstat:vnstat /var/lib/vnstat
 service vnstat restart
