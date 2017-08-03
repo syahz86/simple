@@ -10,6 +10,14 @@ ln -fs /usr/share/zoneinfo/Asia/Kuala_Lumpur /etc/localtime
 sed -i 's/AcceptEnv/#AcceptEnv/g' /etc/ssh/sshd_config
 service ssh restart
 
+# install webserver
+apt-get -y install nginx php5-fpm php5-cli
+
+# install essential package
+apt-get -y install nmap nano iptables sysv-rc-conf openvpn vnstat apt-file
+apt-get -y install libexpat1-dev libxml-parser-perl
+apt-get -y install build-essential
+
 # remove unused
 apt-get -y --purge remove samba*;
 apt-get -y --purge remove apache2*;
@@ -19,6 +27,7 @@ apt-get -y --purge remove bind9*;
 # update
 apt-get update 
 apt-get -y upgrade
+apt-get -y install wget curl
 
 # disable exim
 service exim4 stop
@@ -28,7 +37,6 @@ sysv-rc-conf exim4 off
 apt-file update
 
 # Setting Vnstat
-apt-get -y install vnstat
 vnstat -u -i eth0
 chown -R vnstat:vnstat /var/lib/vnstat
 service vnstat restart
@@ -40,6 +48,19 @@ mv screenfetch-dev /usr/bin/screenfetch
 chmod +x /usr/bin/screenfetch
 echo "clear" >> .profile
 echo "screenfetch" >> .profile
+
+# Install Web Server
+cd
+rm /etc/nginx/sites-enabled/default
+rm /etc/nginx/sites-available/default
+wget -O /etc/nginx/nginx.conf "https://raw.githubusercontent.com/syahz86/VPS/master/conf/nginx.conf"
+mkdir -p /home/vps/public_html
+echo "<pre>Setup by Syahz86</pre>" > /home/vps/public_html/index.html
+echo "<?php phpinfo(); ?>" > /home/vps/public_html/info.php
+wget -O /etc/nginx/conf.d/vps.conf "https://raw.githubusercontent.com/syahz86/VPS/master/conf/vps.conf"
+sed -i 's/listen = \/var\/run\/php5-fpm.sock/listen = 127.0.0.1:9000/g' /etc/php5/fpm/pool.d/www.conf
+service php5-fpm restart
+service nginx restart
 
 # setting port ssh
 sed -i '/Port 22/a Port 143' /etc/ssh/sshd_config
