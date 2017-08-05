@@ -193,14 +193,12 @@ service webmin restart
 # info
 clear
 echo "Setup by Syahz86"
-echo "OpenVPN  : TCP 1194 (client config : http://$MYIP:81/client.tar)"
 echo "OpenSSH  : 22, 143"
 echo "Dropbear : 109, 110, 443"
 echo "Squid3   : 8080, 60000"
 echo ""
 echo "----------"
 echo "Webmin   : http://$MYIP:10000/"
-echo "vnstat   : http://$MYIP:81/vnstat/"
 echo "Timezone : Asia/Malaysia"
 echo -e "Fail2Ban : [\e[32mon\e[0m]"
 echo -e "IPv6     : [\e[31moff\e[0m]"
