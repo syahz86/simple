@@ -115,6 +115,11 @@ wget https://raw.githubusercontent.com/syahz86/simple/master/conf/menu
 mv ./menu /usr/local/bin/menu
 chmod +x /usr/local/bin/menu
 
+# Reboot Server at 12AM Everday
+echo "0 0 * * * root /usr/bin/reboot" > /etc/cron.d/reboot
+echo "* * * * * service dropbear restart" > /etc/cron.d/dropbear
+echo "0 */12 * * * root /usr/bin/userexpired.sh" > /etc/cron.d/userexpired.sh
+
 #bonus block playstation
 iptables -A OUTPUT -d account.sonyentertainmentnetwork.com -j DROP
 iptables -A OUTPUT -d auth.np.ac.playstation.net -j DROP
